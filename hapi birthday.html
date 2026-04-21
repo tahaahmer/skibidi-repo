@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rufeda 🎨</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Josefin+Sans:wght@200;300;400&display=swap');
+
+  :root {
+    --gold: #c9a84c;
+    --deep: #1a0a00;
+    --parchment: #f5ecd7;
+    --ink: #2c1810;
+    --rose: #d4728a;
+    --sage: #7a9e7e;
+    --blush: #f0c4c4;
+    --terracotta: #c0644a;
+    --cream: #fdf6ec;
+    --dark-gold: #8a6820;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #canvas-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0.35;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .subtitle-top {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    color: var(--parchment);
+    line-height: 0.9;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.6s;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    margin-top: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.5s;
+    cursor: pointer;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--gold);
+    margin: 0.8rem auto 0;
+    animation: scrollLine 1.5s ease-in-out infinite 2s;
+  }
+
+  /* ── CONFETTI BUTTON ── */
+  #confetti-btn {
+    margin-top: 2rem;
+    padding: 0.8rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.2s;
+  }
+  #confetti-btn:hover { background: var(--gold); color: var(--deep); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  /* ── DA VINCI SECTION ── */
+  #davinci {
+    background: var(--parchment);
+    text-align: center;
+  }
+
+  #davinci-canvas {
+    width: 100%;
+    max-width: 800px;
+    margin: 3rem auto;
+    display: block;
+    border: 2px solid #c8a96c;
+    box-shadow: 0 8px 40px rgba(100,60,0,0.15);
+  }
+
+  .davinci-text {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ── ART GALLERY ── */
+  #art {
+    background: var(--deep);
+    color: var(--parchment);
+    text-align: center;
+  }
+
+  #art .section-title { color: var(--parchment); }
+
+  .palette-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem auto;
+    flex-wrap: wrap;
+    max-width: 700px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .palette-swatch:hover { transform: scale(1.2); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+
+  #art-output-canvas {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgba(201,168,76,0.3);
+    margin: 0 auto;
+    display: block;
+    cursor: crosshair;
+  }
+
+  .art-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .art-btn {
+    padding: 0.6rem 1.8rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .art-btn:hover { background: var(--gold); color: var(--deep); }
+  .art-btn.active { background: var(--gold); color: var(--deep); }
+
+  /* ── MUSIC ── */
+  #music {
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .vinyl-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0;
+  }
+
+  #vinyl-disc {
+    cursor: pointer;
+    animation: none;
+    transition: filter 0.3s;
+  }
+  #vinyl-disc:hover { filter: drop-shadow(0 0 20px rgba(201,168,76,0.5)); }
+  #vinyl-disc.spinning { animation: spin 4s linear infinite; }
+
+  .playlist {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .track {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(44,24,16,0.08);
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 4px;
+  }
+  .track:hover { background: rgba(201,168,76,0.08); }
+  .track.active { background: rgba(201,168,76,0.12); }
+
+  .track-num {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    width: 24px;
+  }
+
+  .track-info { flex: 1; }
+  .track-name { font-size: 1rem; font-weight: 400; }
+  .track-artist { font-size: 0.85rem; color: #888; font-style: italic; }
+
+  .music-note {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* ── TRAVEL ── */
+  #travel {
+    background: var(--deep);
+    color: var(--parchment);
+    overflow: hidden;
+    position: relative;
+  }
+
+  #travel .section-title { color: var(--parchment); }
+
+  .globe-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .destinations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+  }
+
+  .dest-card {
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .dest-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(201,168,76,0.05);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .dest-card:hover::before { opacity: 1; }
+  .dest-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+  .dest-emoji { font-size: 2rem; margin-bottom: 0.8rem; }
+  .dest-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); }
+  .dest-quote { font-size: 0.85rem; font-style: italic; color: rgba(245,236,215,0.7); margin-top: 0.5rem; }
+
+  /* ── FASHION ── */
+  #fashion {
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .fashion-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem auto;
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
+
+  .fashion-item {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .fashion-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto 1rem;
+    transition: transform 0.3s;
+    border: 1px solid rgba(44,24,16,0.1);
+  }
+  .fashion-item:hover .fashion-icon { transform: rotate(-5deg) scale(1.1); }
+
+  .fashion-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* ── WISH SECTION ── */
+  #wish {
+    background: var(--parchment);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wish-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wish-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .wish-signature {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  #countdown {
+    margin: 3rem auto;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cd-item {
+    text-align: center;
+  }
+
+  .cd-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--dark-gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .cd-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    color: var(--gold);
+    text-align: center;
+    padding: 3rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+  }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--deep);
+    color: var(--gold);
+    padding: 0.8rem 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    border: 1px solid var(--gold);
+    transition: transform 0.4s ease;
+    z-index: 999;
+    white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.3); opacity: 0.3; }
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    mix-blend-mode: normal;
+  }
+
+  nav a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(201,168,76,0.7);
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* Size slider */
+  .size-slider { width: 140px; accent-color: var(--gold); }
+
+  /* ── CONFETTI CANVAS ── */
+  #confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 200;
+  }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { gap: 0.8rem; padding: 1rem; flex-wrap: wrap; background: rgba(26,10,0,0.85); backdrop-filter: blur(6px); }
+    nav a { font-size: 0.55rem; letter-spacing: 0.2em; }
+    section { padding: 4rem 1.2rem; }
+    .hero-content { padding: 1.2rem; }
+    .hero-name { font-size: clamp(3rem, 18vw, 5rem); }
+    .palette-swatch { width: 52px; height: 52px; }
+    #art-output-canvas { height: 240px; }
+    .art-controls { gap: 0.6rem; }
+    .art-btn { padding: 0.5rem 1rem; font-size: 0.65rem; }
+    .size-slider { width: 100px; }
+    .fashion-icon { width: 80px; height: 80px; font-size: 2rem; }
+    .destinations { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .dest-card { padding: 1rem; }
+    .wish-text { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+    .vinyl-wrap svg { width: 170px; height: 170px; }
+    .playlist { padding: 0 0.5rem; }
+    .track { padding: 0.8rem 1rem; }
+    .track-name { font-size: 0.9rem; }
+    #davinci-canvas { max-height: 280px; }
+    #toast { font-size: 0.65rem; padding: 0.7rem 1.2rem; white-space: normal; text-align: center; max-width: 80vw; }
+    .fashion-grid { gap: 1rem; }
+    footer { font-size: 0.6rem; padding: 2rem 1rem; }
+  }
+  @media (max-width: 400px) {
+    .destinations { grid-template-columns: 1fr; }
+    .hero-name { font-size: clamp(2.5rem, 20vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<nav>
+  <a href="#davinci">Art</a>
+  <a href="#art">Create</a>
+  <a href="#music">Music</a>
+  <a href="#travel">Travel</a>
+  <a href="#fashion">Fashion</a>
+  <a href="#wish">Wish</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="canvas-bg"></canvas>
+  <div class="hero-content">
+    <p class="subtitle-top">Happy Birthday</p>
+    <h1 class="hero-name">Ru<em>fe</em>da</h1>
+    <p class="hero-date">5th of May &nbsp;·&nbsp; The Artist of this Generation</p>
+    <button id="confetti-btn" onclick="launchConfetti()">Celebrate ✦</button>
+  </div>
+  <div class="scroll-hint" onclick="document.getElementById('davinci').scrollIntoView()">Scroll</div>
+</section>
+
+<!-- DA VINCI SECTION -->
+<section id="davinci">
+  <span class="section-label reveal">Renaissance Tribute</span>
+  <h2 class="section-title reveal">The Art of <em>You</em></h2>
+  <p class="davinci-text reveal">
+    In the spirit of Leonardo da Vinci — artist, dreamer, and eternal student of the world —
+    your birthday is a canvas, your life a masterpiece still being painted.
+  </p>
+  <canvas id="davinci-canvas" width="800" height="500"></canvas>
+  <p class="davinci-text reveal" style="margin-top:2rem; font-size:0.9rem; color:#888;">
+    ✦ Hover over the sketch to reveal golden ink ✦
+  </p>
+</section>
+
+<!-- ART STUDIO -->
+<section id="art">
+  <span class="section-label reveal" style="color:var(--gold)">Interactive Studio</span>
+  <h2 class="section-title reveal">Paint Your Moment</h2>
+  <p class="reveal" style="max-width:500px;margin:0 auto 1rem;font-style:italic;color:rgba(245,236,215,0.7)">
+    Pick a colour and paint on the canvas below — an artist never stops creating.
+  </p>
+  <div class="palette-row reveal">
+    <div class="palette-swatch" style="background:#d4728a" data-color="#d4728a" title="Rose"></div>
+    <div class="palette-swatch" style="background:#c9a84c" data-color="#c9a84c" title="Gold"></div>
+    <div class="palette-swatch" style="background:#7a9e7e" data-color="#7a9e7e" title="Sage"></div>
+    <div class="palette-swatch" style="background:#5a7dbf" data-color="#5a7dbf" title="Azure"></div>
+    <div class="palette-swatch" style="background:#c0644a" data-color="#c0644a" title="Terracotta"></div>
+    <div class="palette-swatch" style="background:#9b6fa0" data-color="#9b6fa0" title="Violet"></div>
+    <div class="palette-swatch" style="background:#f5ecd7" data-color="#f5ecd7" title="Parchment"></div>
+    <div class="palette-swatch" style="background:#2c1810" data-color="#2c1810" title="Ink"></div>
+  </div>
+  <canvas id="art-output-canvas" width="600" height="350"></canvas>
+  <div class="art-controls reveal">
+    <input type="range" class="size-slider" id="brush-size" min="3" max="40" value="12" title="Brush size">
+    <button class="art-btn active" id="btn-brush" onclick="setTool('brush')">Brush</button>
+    <button class="art-btn" id="btn-spray" onclick="setTool('spray')">Spray</button>
+    <button class="art-btn" id="btn-eraser" onclick="setTool('eraser')">Erase</button>
+    <button class="art-btn" onclick="clearArt()">Clear</button>
+    <button class="art-btn" onclick="saveArt()">Save ↓</button>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music">
+  <span class="section-label reveal">Soundtrack</span>
+  <h2 class="section-title reveal">Her <em>Rhythm</em></h2>
+  <p class="reveal" style="max-width:400px;margin:0 auto;font-style:italic;color:#888;">
+    Click the vinyl to play — a curated vibe just for You. (Get your headphones like the old times)
+  </p>
+  <div class="vinyl-wrap reveal">
+    <svg id="vinyl-disc" width="220" height="220" viewBox="0 0 220 220" onclick="toggleVinyl()">
+      <circle cx="110" cy="110" r="108" fill="#1a0a00" stroke="#c9a84c" stroke-width="1.5"/>
+      <circle cx="110" cy="110" r="88" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+      <circle cx="110" cy="110" r="70" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
+      <circle cx="110" cy="110" r="52" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+      <circle cx="110" cy="110" r="35" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+      <circle cx="110" cy="110" r="28" fill="#c9a84c" opacity="0.9"/>
+      <circle cx="110" cy="110" r="8" fill="#1a0a00"/>
+      <circle cx="110" cy="110" r="3" fill="#c9a84c"/>
+      <text x="110" y="107" text-anchor="middle" fill="#1a0a00" font-family="serif" font-size="5" font-style="italic">Happy</text>
+      <text x="110" y="115" text-anchor="middle" fill="#1a0a00" font-family="serif" font-size="5" font-style="italic">Birthday</text>
+    </svg>
+  </div>
+  <div class="playlist reveal">
+    <div class="track active" onclick="selectTrack(this, 0)">
+      <span class="track-num">01</span>
+      <div class="track-info">
+        <div class="track-name">Paris</div>
+        <div class="track-artist">The 1975</div>
+      </div>
+      <span class="music-note">♪</span>
+    </div>
+    <div class="track" onclick="selectTrack(this, 1)">
+      <span class="track-num">02</span>
+      <div class="track-info">
+        <div class="track-name">TOOTIMETOOTIMETOOTIME</div>
+        <div class="track-artist">The 1975</div>
+      </div>
+      <span class="music-note">♪</span>
+    </div>
+    <div class="track" onclick="selectTrack(this, 2)">
+      <span class="track-num">03</span>
+      <div class="track-info">
+        <div class="track-name">Change Your Ticket</div>
+        <div class="track-artist">One Direction</div>
+      </div>
+      <span class="music-note">♪</span>
+    </div>
+    <div class="track" onclick="selectTrack(this, 3)">
+      <span class="track-num">04</span>
+      <div class="track-info">
+        <div class="track-name">Close To You</div>
+        <div class="track-artist">Gracie Abrams</div>
+      </div>
+      <span class="music-note">♪</span>
+    </div>
+    <div class="track" onclick="selectTrack(this, 4)">
+      <span class="track-num">05</span>
+      <div class="track-info">
+        <div class="track-name">You're Still a Mystery</div>
+        <div class="track-artist">The Bleachers</div>
+      </div>
+      <span class="music-note">♪</span>
+    </div>
+  </div>
+
+  <!--
+    ════════════════════════════════════════════════════════
+    HOW TO ADD YOUR MP3 FILES:
+    1. Place your mp3 files in the same folder as this HTML file
+    2. Name them exactly:  track1.mp3  track2.mp3  track3.mp3  track4.mp3  track5.mp3
+       OR edit the filenames in the audioFiles array in the <script> below.
+    ════════════════════════════════════════════════════════
+  -->
+  <audio id="audio-player" style="display:none"></audio>
+</section>
+
+<!-- TRAVEL -->
+<section id="travel">
+  <span class="section-label reveal" style="color:var(--gold)">Wanderlust</span>
+  <h2 class="section-title reveal">Places to <em>Dream</em></h2>
+  <p class="reveal" style="max-width:500px;margin:0 auto;font-style:italic;color:rgba(245,236,215,0.7)">
+    Every journey is a brushstroke on the canvas of life.
+  </p>
+  <div class="globe-wrap reveal">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="globe-grad" cx="40%" cy="35%">
+          <stop offset="0%" stop-color="#5a7dbf" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#1a3060" stop-opacity="1"/>
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="90" fill="url(#globe-grad)" stroke="#c9a84c" stroke-width="1"/>
+      <ellipse cx="100" cy="100" rx="60" ry="90" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+      <ellipse cx="100" cy="100" rx="30" ry="90" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+      <ellipse cx="100" cy="100" rx="90" ry="30" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
+      <ellipse cx="100" cy="100" rx="90" ry="60" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <!-- continents as blobs -->
+      <path d="M70 70 Q85 60 95 72 Q100 82 88 88 Q75 88 70 80Z" fill="rgba(122,158,126,0.7)"/>
+      <path d="M108 65 Q120 58 132 68 Q138 80 128 90 Q115 94 108 84Z" fill="rgba(122,158,126,0.65)"/>
+      <path d="M62 100 Q75 96 80 108 Q78 120 65 122 Q55 116 58 104Z" fill="rgba(122,158,126,0.6)"/>
+      <path d="M118 108 Q130 103 135 115 Q132 125 120 126 Q112 120 116 112Z" fill="rgba(122,158,126,0.6)"/>
+      <path d="M88 128 Q96 122 104 130 Q102 140 92 140 Q84 134 88 128Z" fill="rgba(122,158,126,0.55)"/>
+      <!-- dot for current location feel -->
+      <circle cx="130" cy="80" r="3" fill="#c9a84c"/>
+      <circle cx="130" cy="80" r="6" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5">
+        <animate attributeName="r" values="4;10;4" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="destinations reveal">
+    <div class="dest-card" onclick="showToast('Pack your bags for Paris! 🗼')">
+      <div class="dest-emoji">🗼</div>
+      <div class="dest-name">Paris</div>
+      <div class="dest-quote">"The city of art and love awaits"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Florence — the cradle of Renaissance art! 🎨')">
+      <div class="dest-emoji">🏛️</div>
+      <div class="dest-name">Florence</div>
+      <div class="dest-quote">"Where da Vinci walked these very streets"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Tokyo — art meets fashion meets future! 🌸')">
+      <div class="dest-emoji">🌸</div>
+      <div class="dest-name">Tokyo</div>
+      <div class="dest-quote">"Fashion capital meets ancient tradition"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Marrakech — a canvas of colour! 🏮')">
+      <div class="dest-emoji">🏮</div>
+      <div class="dest-name">Marrakech</div>
+      <div class="dest-quote">"Every alley a gallery, every carpet a masterpiece"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Amsterdam — canals, art & golden light! 🚲')">
+      <div class="dest-emoji">🚲</div>
+      <div class="dest-name">Amsterdam</div>
+      <div class="dest-quote">"Van Gogh, canals, and endless charm"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Barcelona — Gaudí, tapas & sea breeze! 🌊')">
+      <div class="dest-emoji">🌊</div>
+      <div class="dest-name">Barcelona</div>
+      <div class="dest-quote">"Where architecture becomes poetry"</div>
+    </div>
+    <div class="dest-card" onclick="showToast('Reykjavik — Northern Lights & raw wonder! 🌌')">
+      <div class="dest-emoji">🌌</div>
+      <div class="dest-name">Reykjavik</div>
+      <div class="dest-quote">"Chase the aurora across Icelandic skies"</div>
+    </div>
+  </div>
+</section>
+
+<!-- FASHION -->
+<section id="fashion">
+  <span class="section-label reveal">Style</span>
+  <h2 class="section-title reveal">Her <em>Aesthetic</em></h2>
+  <p class="reveal" style="max-width:400px;margin:0 auto;font-style:italic;color:#888;">
+    Fashion is art you wear every single day.
+  </p>
+  <div class="fashion-grid reveal">
+    <div class="fashion-item" onclick="showToast('Vintage & timeless — always in style!')">
+      <div class="fashion-icon" style="background:#fdf0e0">🧣</div>
+      <div class="fashion-label">Vintage</div>
+    </div>
+    <div class="fashion-item" onclick="showToast('Bold prints — art on fabric!')">
+      <div class="fashion-icon" style="background:#f0e0f0">🎨</div>
+      <div class="fashion-label">Art Prints</div>
+    </div>
+    <div class="fashion-item" onclick="showToast('Golden accessories — she shines!')">
+      <div class="fashion-icon" style="background:#fdf6d0">✨</div>
+      <div class="fashion-label">Jewellery</div>
+    </div>
+    <div class="fashion-item" onclick="showToast('Effortless & chic — her signature!')">
+      <div class="fashion-icon" style="background:#e0f0e0">🌿</div>
+      <div class="fashion-label">Minimalist</div>
+    </div>
+    <div class="fashion-item" onclick="showToast('Always the most stylish in the room!')">
+      <div class="fashion-icon" style="background:#e0ecf8">👗</div>
+      <div class="fashion-label">Couture</div>
+    </div>
+  </div>
+
+  <!-- Mini fashion illustration -->
+  <svg class="reveal" style="display:block;margin:2rem auto" width="320" height="200" viewBox="0 0 320 200">
+    <defs>
+      <linearGradient id="dress-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d4728a"/>
+        <stop offset="100%" stop-color="#9b6fa0"/>
+      </linearGradient>
+    </defs>
+    <!-- figure -->
+    <circle cx="160" cy="38" r="22" fill="#f5d6b8"/>
+    <!-- hair -->
+    <path d="M138 28 Q160 10 182 28 Q185 38 180 42 Q172 20 160 20 Q148 20 140 42 Q135 38 138 28Z" fill="#3d2010"/>
+    <!-- body/dress -->
+    <path d="M145 60 L155 60 L152 78 L148 78Z" fill="#d4728a"/>
+    <path d="M148 75 Q140 120 130 180 L190 180 Q180 120 172 75Z" fill="url(#dress-grad)"/>
+    <!-- arms -->
+    <path d="M150 65 Q130 90 125 110" fill="none" stroke="#f5d6b8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M170 65 Q190 90 195 110" fill="none" stroke="#f5d6b8" stroke-width="8" stroke-linecap="round"/>
+    <!-- palette in hand -->
+    <circle cx="124" cy="115" r="10" fill="#c9a84c"/>
+    <circle cx="121" cy="112" r="3" fill="#d4728a"/>
+    <circle cx="127" cy="111" r="2.5" fill="#7a9e7e"/>
+    <circle cx="124" cy="118" r="2.5" fill="#5a7dbf"/>
+    <!-- legs -->
+    <rect x="148" y="178" width="12" height="18" rx="4" fill="#d4728a"/>
+    <rect x="162" y="178" width="12" height="18" rx="4" fill="#d4728a"/>
+    <!-- decorative stars -->
+    <text x="60" y="80" font-size="14" fill="#c9a84c" opacity="0.6">✦</text>
+    <text x="240" y="60" font-size="10" fill="#d4728a" opacity="0.6">✦</text>
+    <text x="80" y="150" font-size="8" fill="#9b6fa0" opacity="0.5">✦</text>
+    <text x="250" y="140" font-size="12" fill="#c9a84c" opacity="0.5">✦</text>
+  </svg>
+</section>
+
+<!-- WISH -->
+<section id="wish">
+  <div class="wish-inner">
+    <span class="section-label reveal">With Love from Taha</span>
+    <h2 class="section-title reveal">Happy <em>Birthday</em></h2>
+
+    <p class="wish-text reveal">
+      "May you always have the courage to be exactly who you are —
+      unapologetically, completely, brilliantly yourself.
+      May the chapters ahead surprise you, challenge you, and leave you
+      with stories worth telling. May you find peace in the ordinary days
+      and wonder in the unexpected ones. Here's to another year of growing
+      into the most extraordinary version of you.<br><br>
+      Happy Birthday Aunty — please don't get old."
+    </p>
+
+    <div style="margin-top:3rem" class="reveal">
+      <button class="art-btn" style="border-color:#8a6820;color:#8a6820;font-size:0.8rem;padding:1rem 3rem" onclick="launchConfetti()">
+        Celebrate Again ✦
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Made with love by Taha &nbsp;✦&nbsp; Happy Birthday Rufeda</p>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// ── HERO PARTICLE CANVAS ──
+(function(){
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize); resize();
+
+  for(let i=0;i<80;i++){
+    particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*2+0.5,
+      dx: (Math.random()-0.5)*0.3, dy: (Math.random()-0.5)*0.3,
+      a: Math.random()
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(201,168,76,${p.a})`;
+      ctx.fill();
+      p.x += p.dx; p.y += p.dy;
+      if(p.x<0||p.x>W) p.dx*=-1;
+      if(p.y<0||p.y>H) p.dy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── DA VINCI SKETCH ──
+(function(){
+  const canvas = document.getElementById('davinci-canvas');
+  const ctx = canvas.getContext('2d');
+  let revealed = false;
+  let revealProgress = 0;
+
+  function drawSketch(){
+    const W=800, H=500;
+    ctx.fillStyle = '#f5ecd7';
+    ctx.fillRect(0,0,W,H);
+
+    // Aged paper texture lines
+    ctx.strokeStyle = 'rgba(180,150,90,0.08)';
+    ctx.lineWidth = 0.5;
+    for(let i=0;i<H;i+=4){
+      ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(W,i); ctx.stroke();
+    }
+
+    // Main portrait (stylised Da-Vinci-esque face)
+    ctx.strokeStyle = 'rgba(44,24,16,0.55)';
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
+
+    function hatch(x1,y1,x2,y2,gap=6,angle=45){
+      ctx.save();
+      ctx.translate(x1,y1);
+      ctx.rotate(angle*Math.PI/180);
+      const len = Math.hypot(x2-x1,y2-y1);
+      ctx.strokeStyle='rgba(44,24,16,0.2)';
+      ctx.lineWidth=0.6;
+      for(let i=0;i<len;i+=gap){
+        ctx.beginPath();ctx.moveTo(i,-30);ctx.lineTo(i,30);ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // ── Vitruvian-esque circle and square
+    ctx.strokeStyle='rgba(44,24,16,0.3)';
+    ctx.lineWidth=0.8;
+    ctx.beginPath(); ctx.arc(400,240,200,0,Math.PI*2); ctx.stroke();
+    ctx.strokeRect(200,40,400,400);
+
+    // Cross lines
+    ctx.beginPath(); ctx.moveTo(400,40); ctx.lineTo(400,440);
+    ctx.moveTo(200,240); ctx.lineTo(600,240); ctx.stroke();
+
+    // ── Human figure outline (simplified)
+    ctx.strokeStyle='rgba(44,24,16,0.5)';
+    ctx.lineWidth=1.2;
+    // head
+    ctx.beginPath(); ctx.arc(400,115,38,0,Math.PI*2); ctx.stroke();
+    // neck
+    ctx.beginPath(); ctx.moveTo(387,152); ctx.lineTo(385,172); ctx.moveTo(413,152); ctx.lineTo(415,172); ctx.stroke();
+    // body
+    ctx.beginPath(); ctx.moveTo(385,172); ctx.lineTo(360,280); ctx.lineTo(340,390); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(415,172); ctx.lineTo(440,280); ctx.lineTo(460,390); ctx.stroke();
+    // arms horizontal
+    ctx.beginPath(); ctx.moveTo(200,240); ctx.lineTo(600,240); ctx.stroke();
+    // legs
+    ctx.beginPath(); ctx.moveTo(360,390); ctx.lineTo(330,440); ctx.moveTo(440,390); ctx.lineTo(470,440); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(340,390); ctx.lineTo(310,440); ctx.moveTo(460,390); ctx.lineTo(490,440); ctx.stroke();
+
+    // Face features
+    ctx.strokeStyle='rgba(44,24,16,0.45)';
+    ctx.lineWidth=0.8;
+    // eyes
+    ctx.beginPath(); ctx.arc(385,110,7,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(415,110,7,0,Math.PI*2); ctx.stroke();
+    // nose
+    ctx.beginPath(); ctx.moveTo(400,118); ctx.lineTo(395,132); ctx.lineTo(405,132); ctx.stroke();
+    // mouth
+    ctx.beginPath(); ctx.moveTo(388,140); ctx.quadraticCurveTo(400,148,412,140); ctx.stroke();
+    // eyebrows
+    ctx.beginPath(); ctx.moveTo(377,101); ctx.lineTo(393,99);
+    ctx.moveTo(407,99); ctx.lineTo(423,101); ctx.stroke();
+
+    // Da Vinci mirror writing annotation style
+    ctx.font = 'italic 11px Palatino, serif';
+    ctx.fillStyle = 'rgba(100,60,20,0.4)';
+    ctx.fillText('spiritus movetur — the spirit moves', 30, 470);
+    ctx.fillText('l\'arte è la celebrazione della vita', 460, 30);
+    ctx.fillText('rufeda', 30, 30);
+
+    // Measurement lines
+    ctx.strokeStyle='rgba(100,60,20,0.2)';
+    ctx.lineWidth=0.5;
+    for(let y=40;y<=440;y+=40){
+      ctx.beginPath(); ctx.moveTo(185,y); ctx.lineTo(195,y); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(605,y); ctx.lineTo(615,y); ctx.stroke();
+    }
+
+    // ── Floral / art motifs in corners
+    drawFlower(ctx, 100, 80, 30);
+    drawFlower(ctx, 700, 80, 25);
+    drawFlower(ctx, 100, 420, 25);
+    drawFlower(ctx, 700, 420, 28);
+  }
+
+  function drawFlower(ctx, x, y, r){
+    ctx.strokeStyle='rgba(44,24,16,0.3)';
+    ctx.lineWidth=0.7;
+    for(let i=0;i<8;i++){
+      const a = (i/8)*Math.PI*2;
+      ctx.beginPath();
+      ctx.ellipse(x+Math.cos(a)*r*0.5, y+Math.sin(a)*r*0.5, r*0.35, r*0.18, a, 0, Math.PI*2);
+      ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(x,y,r*0.18,0,Math.PI*2); ctx.stroke();
+  }
+
+  drawSketch();
+
+  // Golden reveal on hover
+  canvas.addEventListener('mousemove', function(e){
+    const rect = canvas.getBoundingClientRect();
+    const sx = (e.clientX - rect.left) * (canvas.width/rect.width);
+    const sy = (e.clientY - rect.top) * (canvas.height/rect.height);
+    const grad = ctx.createRadialGradient(sx,sy,0,sx,sy,60);
+    grad.addColorStop(0,'rgba(201,168,76,0.25)');
+    grad.addColorStop(1,'rgba(201,168,76,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(sx-65,sy-65,130,130);
+  });
+})();
+
+// ── ART STUDIO ──
+(function(){
+  const canvas = document.getElementById('art-output-canvas');
+  const ctx = canvas.getContext('2d');
+  let painting = false;
+  let color = '#d4728a';
+  let tool = 'brush';
+  let size = 12;
+
+  ctx.fillStyle = '#1a0a00';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  // Subtle grid
+  ctx.strokeStyle = 'rgba(201,168,76,0.05)';
+  ctx.lineWidth=1;
+  for(let x=0;x<canvas.width;x+=30){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke(); }
+  for(let y=0;y<canvas.height;y+=30){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke(); }
+
+  function getPos(e){
+    const rect=canvas.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    return {
+      x: (t.clientX-rect.left)*(canvas.width/rect.width),
+      y: (t.clientY-rect.top)*(canvas.height/rect.height)
+    };
+  }
+
+  function paint(e){
+    if(!painting) return;
+    const {x,y} = getPos(e);
+    const sz = parseInt(document.getElementById('brush-size').value);
+    if(tool==='eraser'){
+      ctx.fillStyle='#1a0a00'; ctx.beginPath(); ctx.arc(x,y,sz,0,Math.PI*2); ctx.fill();
+    } else if(tool==='spray'){
+      for(let i=0;i<30;i++){
+        const rx=x+(Math.random()-0.5)*sz*2.5;
+        const ry=y+(Math.random()-0.5)*sz*2.5;
+        ctx.fillStyle=color; ctx.globalAlpha=Math.random()*0.5+0.1;
+        ctx.beginPath(); ctx.arc(rx,ry,1,0,Math.PI*2); ctx.fill();
+      }
+      ctx.globalAlpha=1;
+    } else {
+      ctx.fillStyle=color; ctx.globalAlpha=0.85;
+      ctx.beginPath(); ctx.arc(x,y,sz/2,0,Math.PI*2); ctx.fill();
+      ctx.globalAlpha=1;
+    }
+  }
+
+  canvas.addEventListener('mousedown', e=>{painting=true; paint(e);});
+  canvas.addEventListener('mousemove', paint);
+  canvas.addEventListener('mouseup', ()=>painting=false);
+  canvas.addEventListener('mouseleave', ()=>painting=false);
+  canvas.addEventListener('touchstart', e=>{e.preventDefault();painting=true;paint(e);});
+  canvas.addEventListener('touchmove', e=>{e.preventDefault();paint(e);});
+  canvas.addEventListener('touchend', ()=>painting=false);
+
+  document.querySelectorAll('.palette-swatch').forEach(s=>{
+    s.addEventListener('click',()=>{ color=s.dataset.color; tool='brush'; setTool('brush'); });
+  });
+
+  window.setTool = function(t){
+    tool=t;
+    document.querySelectorAll('.art-btn').forEach(b=>b.classList.remove('active'));
+    const el = document.getElementById('btn-'+t);
+    if(el) el.classList.add('active');
+  };
+
+  window.clearArt = function(){
+    ctx.fillStyle='#1a0a00'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle='rgba(201,168,76,0.05)'; ctx.lineWidth=1;
+    for(let x=0;x<canvas.width;x+=30){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke();}
+    for(let y=0;y<canvas.height;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+  };
+
+  window.saveArt = function(){
+    const a=document.createElement('a');
+    a.download='rufeda-art.png';
+    a.href=canvas.toDataURL();
+    a.click();
+    showToast('Your masterpiece is saved! 🎨');
+  };
+})();
+
+// ── VINYL / MUSIC ──
+// ════════════════════════════════════════════════════
+// TO ADD YOUR MP3 FILES:
+// Put your mp3 files in the same folder as this HTML file.
+// Update the filenames below to match your actual file names.
+// ════════════════════════════════════════════════════
+const audioFiles = [
+  'track1.mp3',   // Paris — The 1975
+  'track2.mp3',   // TOOTIMETOOTIMETOOTIME — The 1975
+  'track3.mp3',   // Change Your Ticket — One Direction
+  'track4.mp3',   // Close To You — Gracie Abrams
+  'track5.mp3',   // You're Such a Mystery — The Bleachers
+];
+const trackNames = [
+  'Paris — The 1975',
+  'TOOTIMETOOTIMETOOTIME — The 1975',
+  'Change Your Ticket — One Direction',
+  'Close To You — Gracie Abrams',
+  "You're Such a Mystery — The Bleachers"
+];
+
+const audioPlayer = document.getElementById('audio-player');
+let vinylOn = false;
+let currentTrackIdx = 0;
+
+function loadAndPlay(idx){
+  audioPlayer.src = audioFiles[idx];
+  audioPlayer.load();
+  audioPlayer.play().catch(()=>{
+    showToast('Add mp3 files to enable playback ♪');
+  });
+  document.getElementById('vinyl-disc').classList.add('spinning');
+  vinylOn = true;
+}
+
+audioPlayer.addEventListener('ended', ()=>{
+  const next = (currentTrackIdx + 1) % audioFiles.length;
+  const tracks = document.querySelectorAll('.track');
+  tracks.forEach(t=>t.classList.remove('active'));
+  tracks[next].classList.add('active');
+  currentTrackIdx = next;
+  loadAndPlay(next);
+  showToast('♪  ' + trackNames[next]);
+});
+
+function toggleVinyl(){
+  const disc = document.getElementById('vinyl-disc');
+  if(vinylOn){
+    audioPlayer.pause();
+    disc.classList.remove('spinning');
+    vinylOn = false;
+    showToast('Paused ♪');
+  } else {
+    if(audioPlayer.src && audioPlayer.src !== window.location.href){
+      audioPlayer.play().catch(()=>showToast('Add mp3 files to enable playback ♪'));
+    } else {
+      loadAndPlay(currentTrackIdx);
+    }
+    disc.classList.add('spinning');
+    vinylOn = true;
+    showToast('Now playing your birthday soundtrack ♪');
+  }
+}
+
+function selectTrack(el, idx){
+  document.querySelectorAll('.track').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  currentTrackIdx = idx;
+  loadAndPlay(idx);
+  showToast('♪  ' + trackNames[idx]);
+}
+
+// ── CONFETTI ──
+window.launchConfetti = function(){
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const pieces = [];
+  const colors = ['#c9a84c','#d4728a','#7a9e7e','#9b6fa0','#5a7dbf','#c0644a','#f5ecd7'];
+
+  for(let i=0;i<180;i++){
+    pieces.push({
+      x: Math.random()*canvas.width,
+      y: -20 - Math.random()*200,
+      r: Math.random()*8+3,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      speed: Math.random()*4+2,
+      drift: (Math.random()-0.5)*2,
+      rot: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*8,
+      shape: Math.floor(Math.random()*3) // 0=circle,1=rect,2=star
+    });
+  }
+
+  let frame=0;
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=0.9;
+      if(p.shape===0){ ctx.beginPath();ctx.arc(0,0,p.r,0,Math.PI*2);ctx.fill(); }
+      else if(p.shape===1){ ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r); }
+      else {
+        ctx.beginPath();
+        for(let s=0;s<5;s++){
+          const a=(s*72-90)*Math.PI/180;
+          const b=((s*72+36)-90)*Math.PI/180;
+          s===0?ctx.moveTo(Math.cos(a)*p.r,Math.sin(a)*p.r):ctx.lineTo(Math.cos(a)*p.r,Math.sin(a)*p.r);
+          ctx.lineTo(Math.cos(b)*p.r*0.45,Math.sin(b)*p.r*0.45);
+        }
+        ctx.closePath();ctx.fill();
+      }
+      ctx.restore();
+      p.y+=p.speed; p.x+=p.drift; p.rot+=p.rotSpeed;
+    });
+    frame++;
+    if(frame<160) requestAnimationFrame(animate);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  animate();
+};
+
+// ── TOAST ──
+window.showToast = function(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.classList.remove('show'),3000);
+};
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ── AUTO CONFETTI ON LOAD ──
+window.addEventListener('load',()=>{ setTimeout(launchConfetti,1800); });
+</script>
+</body>
+</html>
